@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Some notes regarding handling threads/forums:
+# Make new posts by including a line in `thread_names` with the thread name
+# Add new messages on old posts by including the id in `thread_ids` and leaving the `thread_names` line empty
+# This design means you can't add a followup message and new post all in one go, but oh well
+
 if [ -z "$ID_FILE" ]; then
     ID_FILE='ids'
 fi
