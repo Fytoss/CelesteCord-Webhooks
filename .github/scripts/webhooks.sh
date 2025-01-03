@@ -4,6 +4,14 @@ if [ -z "$ID_FILE" ]; then
     ID_FILE='ids'
 fi
 
+if [ -z "$THREAD_NAMES_FILE" ]; then
+    THREAD_NAMES_FILE='thread_names'
+fi
+
+if [ -z "$THREAD_ID_FILE" ]; then
+    THREAD_ID_FILE='thread_ids'
+fi
+
 POST_PROCESS='grep .'
 case "$(uname)" in CYGWIN*|MINGW*|MSYS*)
     curl -V | grep Unicode || POST_PROCESS='iconv -c -f UTF-8 -t ASCII//TRANSLIT'
@@ -19,6 +27,22 @@ webhook_url() {
     else
         echo $TEST_WEBHOOK_URL
     fi
+}
+
+# args:
+#   Message index
+thread_name() {
+    local THREAD_NAMES=()
+    readarray -t THREAD_NAMES < <(cat ./$HOOK/$THREAD_NAMES_FILE | tr -d '\r')
+    echo ${THREAD_NAMES[$1]}
+}
+
+# args:
+#   Message index
+thread_id() {
+    local THREAD_IDS=()
+    readarray -t THREAD_IDS < <(cat ./$HOOK/$THREAD_ID_FILE | tr -d '\r')
+    echo ${THREAD_IDS[$1]}
 }
 
 # args:
@@ -45,9 +69,11 @@ webhook_status() {
 
     local IDS=()
     readarray -t IDS < <(cat ./$HOOK/$ID_FILE | tr -d '\r')
-    for MSG in ${IDS[@]}; do
+    for MSG_IDX in ${!IDS[@]}; do
         sleep 0.05
-        if ! curl -o /dev/null -f "$WEBHOOK_URL/messages/$MSG"; then
+        local msg_thread_id=$(thread_id $MSG_IDX)
+        test ${msg_thread_id} && msg_thread_id="?thread_id=$msg_thread_id"
+        if ! curl -o /dev/null -f "$WEBHOOK_URL/messages/${IDS[MSG_IDX]}$msg_thread_id"; then
             return 3
         fi
     done
@@ -66,15 +92,23 @@ webhook_status() {
 send_message() {
     embed_query='--argjson embeds []'
     test -f $3/embeds/$4 && embed_query="--slurpfile embeds $3/embeds/$4"
+
+    # If thread id or thread name are defined for this message, use it
+    # We rely on the user to make sure these are in valid combinations
+    msg_thread_id=$(thread_id $4)
+    test ${msg_thread_id} && msg_thread_id="thread_id=$msg_thread_id&"
+    msg_thread_name=$(thread_name $4)
+    test ${msg_thread_name} && msg_thread_name=", thread_name: \"$msg_thread_name\""
+    
     curl \
         -X $2 \
         -H "Content-Type: application/json" \
-        "$1?wait=true" \
+        "$1?${msg_thread_id}wait=true" \
         -d "$(
             jq -ncj \
             --rawfile content $3/messages/$4 \
             $embed_query \
-            '{content: $content, embeds: $embeds, allowed_mentions: {parse: []}}' | \
+            "{content: \$content, embeds: \$embeds, allowed_mentions: {parse: []}$msg_thread_name}" | \
             perl -e '$json = <>; $json =~ s/<\{\{ (.+?) \}\}>/`cat $1 | jq -sR | head -c -3 | tail -c +2`/ge; print $json' | \
             $POST_PROCESS \
         )" \
@@ -117,6 +151,9 @@ for HOOK in "${!WEBHOOKS[@]}"; do
                 echo "Appending message $IDX to $HOOK"
                 response=$(send_message $WEBHOOK_URL POST $HOOK $IDX)
                 echo $response | jq -r '.id' >>"./$HOOK/$ID_FILE"
+                # The id of a post is the same as the id of the first message
+                msg_thread_name=$(thread_name $IDX)
+                test $msg_thread_name && echo $response | jq -r '.id' >>"./$HOOK/$THREAD_ID_FILE"
             else
                 echo "Updating message $MSG_ID for $HOOK"
                 send_message $WEBHOOK_URL/messages/$MSG_ID PATCH $HOOK $IDX 
@@ -133,6 +170,9 @@ for HOOK in "${!WEBHOOKS[@]}"; do
             echo "Sending message $IDX for $HOOK"
             response=$(send_message $WEBHOOK_URL POST $HOOK $IDX)
             echo $response | jq -r '.id' >>"./$HOOK/$ID_FILE"
+            # The id of a post is the same as the id of the first message
+            msg_thread_name=$(thread_name $IDX)
+            test $msg_thread_name && echo $response | jq -r '.id' >>"./$HOOK/$THREAD_ID_FILE"
         done
 
     else
