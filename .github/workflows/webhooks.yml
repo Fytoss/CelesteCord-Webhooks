@@ -40,8 +40,8 @@ jobs:
         if: env.ids_updated
         with:
           commit-message: "[ci] [skip ci] Update message ids"
-          author: coloursofnoise <coloursofthenoise@gmail.com>
+          author: Brokemia <37253216+Brokemia@users.noreply.github.com>
           branch: webhook-ci
           delete-branch: true
           title: "[ci] Update Message IDs"
-          reviewers: coloursofnoise
+          reviewers: Brokemia

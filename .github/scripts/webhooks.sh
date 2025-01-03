@@ -97,7 +97,7 @@ send_message() {
     msg_thread_id=$(thread_id $4)
     test ${msg_thread_id} && msg_thread_id="thread_id=$msg_thread_id&"
     msg_thread_name=$(thread_name $4)
-    test ${msg_thread_name} && msg_thread_name=", thread_name: \"$msg_thread_name\""
+    test "${msg_thread_name}" && msg_thread_name=", thread_name: \"$msg_thread_name\""
     
     curl \
         -X $2 \
@@ -152,7 +152,7 @@ for HOOK in "${!WEBHOOKS[@]}"; do
                 echo $response | jq -r '.id' >>"./$HOOK/$ID_FILE"
                 # The id of a post is the same as the id of the first message
                 msg_thread_name=$(thread_name $IDX)
-                test $msg_thread_name && echo $response | jq -r '.id' >>"./$HOOK/$THREAD_ID_FILE"
+                test "$msg_thread_name" && echo $response | jq -r '.id' >>"./$HOOK/$THREAD_ID_FILE"
             else
                 echo "Updating message $MSG_ID for $HOOK"
                 send_message $WEBHOOK_URL/messages/$MSG_ID PATCH $HOOK $IDX 
@@ -171,7 +171,7 @@ for HOOK in "${!WEBHOOKS[@]}"; do
             echo $response | jq -r '.id' >>"./$HOOK/$ID_FILE"
             # The id of a post is the same as the id of the first message
             msg_thread_name=$(thread_name $IDX)
-            test $msg_thread_name && echo $response | jq -r '.id' >>"./$HOOK/$THREAD_ID_FILE"
+            test "$msg_thread_name" && echo $response | jq -r '.id' >>"./$HOOK/$THREAD_ID_FILE"
         done
 
     else
