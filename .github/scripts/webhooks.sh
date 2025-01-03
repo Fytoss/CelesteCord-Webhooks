@@ -56,11 +56,9 @@ thread_id() {
 webhook_status() {
     local HOOK="$1"
     local WEBHOOK_URL=$(webhook_url $HOOK)
-    echo Before basic check
     if ! curl -o /dev/null -f "$WEBHOOK_URL"; then
         return 1
     fi
-    echo After basic check
     test $TEST_SEND && return 2
 
     if ! test -f "./$HOOK/$ID_FILE" && test -f "./$HOOK/new"; then
@@ -72,10 +70,8 @@ webhook_status() {
     readarray -t IDS < <(cat ./$HOOK/$ID_FILE | tr -d '\r')
     for MSG_IDX in ${!IDS[@]}; do
         sleep 0.05
-        echo Message id $MSG_IDX
         local msg_thread_id=$(thread_id $MSG_IDX)
         test ${msg_thread_id} && msg_thread_id="?thread_id=$msg_thread_id"
-        echo Test: /messages/${IDS[MSG_IDX]}$msg_thread_id
         if ! curl -o /dev/null -f "$WEBHOOK_URL/messages/${IDS[MSG_IDX]}$msg_thread_id"; then
             return 3
         fi
