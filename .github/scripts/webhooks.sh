@@ -73,6 +73,7 @@ webhook_status() {
         sleep 0.05
         local msg_thread_id=$(thread_id $MSG_IDX)
         test ${msg_thread_id} && msg_thread_id="?thread_id=$msg_thread_id"
+        echo Test: /messages/${IDS[MSG_IDX]}$msg_thread_id
         if ! curl -o /dev/null -f "$WEBHOOK_URL/messages/${IDS[MSG_IDX]}$msg_thread_id"; then
             return 3
         fi
