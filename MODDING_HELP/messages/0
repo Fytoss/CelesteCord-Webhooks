@@ -1,19 +1,19 @@
-Heya, and welcome to <#953393160464269402>!
+Heya, and welcome to #modding_help!
 This is your new home to ask for help with modding the game - make sure you've read the channel description and this post before making your own.
-If you're looking to get set up with modding in the first place, check out <#928422006985203822> ⁠and the pins for any other channels that may be relevant.
+If you're looking to get set up with modding in the first place, check out #modding_welcome ⁠and the pins for any other channels that may be relevant.
 
 When making a post, make sure you've read through all of the following, as well as any resources:
 
-- **If you're having trouble installing Everest, check this wiki page for some common issues and their fixes:**
-- <https://github.com/EverestAPI/Resources/wiki/Everest-Install-Issues>
+# - **If Everest itself is crashing, check if it is a known/common crash [here](<https://github.com/EverestAPI/Resources/wiki/Common-Crashes>).**
 
 - Add a clear title briefly describing your issue - this helps us with seeing whether we're able to help
 - Make sure to add any relevant tags, such as :warning: Crash
+
+- If you're having trouble installing Everest, check this wiki page for some common issues and their fixes:
+- <https://github.com/EverestAPI/Resources/wiki/Everest-Install-Issues>
 
 - For more general issues/helper information, please read the Everest/Helper Wiki first:
 - <https://github.com/EverestAPI/Resources/wiki>
 - <https://github.com/EverestAPI/ModResources/wiki>
 
 - If you're experiencing a crash or other error, include your log.txt/error_log.txt/log-sharp.txt
-- **If Everest itself is crashing, read through the common issues here:**
-  -  <https://github.com/EverestAPI/Resources/wiki/common-crashes>
