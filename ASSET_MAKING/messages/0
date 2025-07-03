@@ -1,16 +1,18 @@
-**Welcome to <#696801669517672658>!**
-**This is a place for Spriters and Musicians to discuss asset creation for Celeste mods, and to showcase what they've made.**
+# Welcome to <#696801669517672658>!
+**This is a place for artists to discuss asset creation for Celeste mods, and to showcase what they've made.**
+**If you're interested in adding custom Audio or Sound Effects, check out <#1253617607664336917> as well.**
 
-Mappers, if you want to use an asset in your map, **ask for permission first**. Spriters/Musicians, if your work is freely usable by anyone, please tag it as such.
+Mappers, if you want to use an asset in your map, **ask for permission first** or check if it is on the Community Asset Drive (see below).  
+Artists, if your work is freely usable by anyone, please tag it as such, or upload it to the Community Asset Drive (see below).
 
-General information on Tilesets, FMOD and other guides for asset creation can be found under the Graphics and Audio sections of the [Everest Wiki](<https://github.com/EverestAPI/Resources/wiki>) respectively.
+General information on tilesets, portraits, decals, and other resources for asset creation can be found under the Graphics section of the [Everest Wiki](<https://github.com/EverestAPI/Resources/wiki>). Feel free to update it if necessary - any and all contributions are greatly appreciated!
 
-Download the [Vanilla Graphics Dump](<https://drive.google.com/file/d/1ITwCI2uJ7YflAG0OwBR4uOUEJBjwTCet/view>) for version 1.4.0.0, structured in the same way as vanilla.
+If you need to browse vanilla textures, check out <@354341658352943115>'s [Graphics Dump Browser](<https://maddie480.ovh/celeste/graphics-dump-browser>) for version 1.4.0.0. From there, you can download individual textures or the entire dump in `.png` format.
 
-For custom sprites, check out the [Community Asset Drive](<https://maddie480.ovh/celeste/asset-drive>), full of tilesets, decals, and more for modders to use. If you want to contribute yourself, ping <@&1217533882891763792>
+If you need custom assets, head over to the [Community Asset Drive](<https://maddie480.ovh/celeste/asset-drive>). It is packed full of tilesets, stylegrounds, decals, and more for all modders to use. If you want to contribute yourself, ping the <@&1217533882891763792>.
+
+You may also find various Asset Packs in the [Assets](<https://gamebanana.com/mods/cats/15655>) category on GameBanana. **Please familiarize yourself with their terms before using them** (usually in the description).
 
 If you're just getting started (or just want to up your game), you can also have a look at Pedro's (the spriter for Celeste) amazing [Pixel Art Tutorials](<https://lospec.com/pixel-art-tutorials/author/pedro-medeiros>).
 
-Musicians, you can download the FMOD project for Celeste from the [FMOD Downloads page](<https://www.fmod.com/download#learningresources>), under learning resources. Make sure to read the [Documentation and EULA](<https://www.fmod.com/resources/documentation-studio?version=2.01&page=appendix-a-celeste.html>).
-
-If you're interested in starting a skin mod, you can use the [SkinMod Checklist](https://docs.google.com/spreadsheets/d/1yQpj05TaNuI5rfxF4zCfg8Z9oX_XzihGwm94D2t5ZkE) created by <@196034997507981313> to track your progress.
+If you're interested in starting a skin mod, you can find some useful **templates** and other resources at the [Skinmods](<https://github.com/EverestAPI/Resources/wiki/Skinmods>) wiki page.
