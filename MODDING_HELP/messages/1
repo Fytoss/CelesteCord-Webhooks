@@ -1,0 +1,13 @@
+## :mountain: **If Olympus is crashing, please do the following:**
+- **Try reinstalling Olympus.** Sometimes updates do not complete successfully.
+  - You can manually reinstall Olympus following the steps in the </manualolympusupdate:1152495655449800765> command.
+- **Make sure to include necessary logs.** Olympus logs' location is described in the </olympuslogs:1172673423042949141> command.
+- **Describe your problem *as accurately as you can***, so that we can focus on solving it immediately instead of having to figure out what issue you're having in the first place.
+- Following these steps makes the lives of the people who are trying to help you much easier. Please respect their time.
+
+## :warning: **If you're having trouble installing Everest, check this wiki page for some common issues and their fixes:**
+- <https://github.com/EverestAPI/Resources/wiki/Everest-Install-Issues>
+
+## :question: **For more general issues/helper information, please read the Everest/Helper Wiki first:**
+- <https://github.com/EverestAPI/Resources/wiki>
+- <https://github.com/EverestAPI/ModResources/wiki>

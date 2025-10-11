@@ -5,18 +5,11 @@ If you're looking to get set up with modding in the first place, check out <#928
 
 Before making a post, read through the following points:
 
-# **If Everest or Celeste itself is crashing, please check if it is [a known/common crash](<https://github.com/EverestAPI/Resources/wiki/Common-Crashes>) first.**
+# :mountain: **If Everest or vanilla Celeste are crashing, please check if it is [a known/common crash here (:link:)](<https://github.com/EverestAPI/Resources/wiki/Common-Crashes>) first.**
 - **Try updating Everest and your mods.** It's possible that an update may have already fixed your issue.
 - **Make sure to include necessary logs.**
-  - For Everest crashes, the "Oooops!" crash screen will tell you what file to upload, along with a button to open the folder it's in. If your issue is not a crash, you can find `log.txt` or `error_log.txt` in the folder Celeste is installed to.
-  - For Olympus issues, its logs location is described in the </olympuslogs:1172673423042949141> command.
+  - For Everest crashes, the "Oooops!" crash screen will tell you what file to upload, along with a button to open the folder it's in. If your issue is not a crash (so a postcard or unexpected behavior), you can find `log.txt` in the folder Celeste has been installed to.
+  - For vanilla Celeste crashes, you can find error details in `error_log.txt` or `errorLog.txt`, in the folder Celeste has been installed to. **Pay attention to the date and time of the crash at the top.**
 - **Describe your problem *as accurately as you can***, so that we can focus on solving it immediately instead of having to figure out what issue you're having in the first place.
 - **Make sure to add any relevant tags**, such as :warning: Crash
 - Following these steps makes the lives of the people who are trying to help you much easier. Please respect their time.
-
-## **If you're having trouble installing Everest, check this wiki page for some common issues and their fixes:**
-- <https://github.com/EverestAPI/Resources/wiki/Everest-Install-Issues>
-
-## **For more general issues/helper information, please read the Everest/Helper Wiki first:**
-- <https://github.com/EverestAPI/Resources/wiki>
-- <https://github.com/EverestAPI/ModResources/wiki>
